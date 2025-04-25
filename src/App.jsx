@@ -12,26 +12,23 @@ export default function App() {
   const [sortOption, setSortOption] = useState("");
 
   useEffect(() => {
-    // Fetch the doctor data
     fetch("https://srijandubey.github.io/campus-api-mock/SRM-C1-25.json")
       .then((res) => res.json())
       .then((data) => {
         setDoctors(data);
-        setFilteredDoctors(data); // Initially, show all doctors
+        setFilteredDoctors(data);
       });
   }, []);
 
   useEffect(() => {
     let filtered = [...doctors];
 
-    // Apply search term filter
     if (searchTerm) {
       filtered = filtered.filter((doc) =>
         doc.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
-    // Apply consultation mode filter
     if (modeFilter) {
       if (modeFilter === "Video Consult") {
         filtered = filtered.filter((doc) => doc.video_consult);
@@ -40,7 +37,6 @@ export default function App() {
       }
     }
 
-    // Apply specialty filters (partial match handling)
     if (specialtyFilters.length > 0) {
       filtered = filtered.filter((doc) =>
         doc.specialities.some((s) =>
@@ -51,7 +47,6 @@ export default function App() {
       );
     }
 
-    // Apply sorting logic
     if (sortOption === "fees") {
       filtered.sort(
         (a, b) =>
@@ -65,13 +60,18 @@ export default function App() {
       });
     }
 
-    setFilteredDoctors(filtered); // Update the filtered doctors list
+    setFilteredDoctors(filtered);
   }, [searchTerm, modeFilter, specialtyFilters, sortOption, doctors]);
 
   return (
     <div className="min-h-screen bg-[#f0f2f5]">
-      {/* Header with search bar */}
-      <Header doctors={doctors} setSearchTerm={setSearchTerm} />
+      {/* Sticky Header */}
+      <div className="sticky top-0 z-50 bg-white shadow p-4">
+        <h1 className="text-2xl font-semibold text-center mb-2 text-blue-800">
+          Doctor Listing Page
+        </h1>
+        <Header doctors={doctors} setSearchTerm={setSearchTerm} />
+      </div>
 
       {/* Main content */}
       <div className="flex flex-col md:flex-row gap-6 px-4 md:px-10 py-6">
