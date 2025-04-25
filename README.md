@@ -10,6 +10,7 @@ A dynamic **Doctor Listing Page** where users can search, filter, and sort docto
 4. [Usage](#usage)
 5. [Technologies Used](#technologies-used)
 6. [Folder Structure](#folder-structure)
+7. [Demo](#demo)
 
 
 ## Overview
@@ -91,7 +92,7 @@ Once the app is running locally, you can:
 doctor-listing-page/
 │
 ├── src/
-│   ├── assets/               # Contains image assets (e.g., doctor images)
+│   ├── assets/               
 │   ├── components/           # React components (Header, DoctorList, FilterPanel)
 │   ├── pages/                # Page components (DoctorListPage)
 │   ├── utils/                # Utility functions like API fetching
@@ -103,5 +104,10 @@ doctor-listing-page/
 ├── package.json              # NPM package configuration
 └── tailwind.config.js        # Tailwind CSS configuration
 ```
+
+
+## Demo 
+
+https://github.com/user-attachments/assets/bf6e1fbe-ba7a-4f9b-8535-49e1d1befe8d
 
 
